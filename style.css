@@ -1,0 +1,125 @@
+html {
+    background-color: black;
+}
+
+body {
+    cursor: crosshair;
+    text-align: center;
+    color:white;
+}
+
+
+.title{
+    font-size:60px;
+}
+
+footer{
+    font-size:60px;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+table{
+    border:solid;
+    margin: auto;
+    width:600px;
+}
+tr,td{
+    border:double;
+    font-size:50px;
+    background-color: darkgreen;
+}
+
+td:hover{
+    background-color:aqua;
+    color:green;
+}
+td:hover:after{
+    content: "<-";
+}
+td:hover:before{
+    content: "->";
+}
+
+.star {
+    animation: kirakira 8s linear;
+    color: blue;
+    display: inline-block;
+    height: 1em;
+    line-height: 1em;
+    position: fixed;
+    top: -1em;
+    z-index: 0;
+}
+
+@keyframes kirakira {
+    0% {
+        transform: translateY(0) rotateY(0);
+    }
+    100% {
+        transform: translateY(calc(100vh + 1em)) rotateY(3600deg);
+    }
+}
+
+/**ﾏｰｷｰ */
+/** マーキーさせたい部分 */
+.marquee {
+    position: relative; /* マーキーの内容部分の位置の基準になるように */
+}
+
+/* マーキーの内容部分の高さ確保 */
+.marquee::after {
+    content: "";
+    white-space: nowrap;
+    display: inline-block;
+}
+
+/* マーキーさせたい部分(内側) */
+.marquee > .marquee-inner {
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    animation-name: marquee;
+    animation-timing-function: linear;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+
+/* マウスオーバーでマーキーストップ */
+.marquee > .marquee-inner:hover {
+    animation-play-state: paused;
+    cursor: default;
+}
+
+/** マーキーアニメーション */
+@keyframes marquee {
+    0% {
+        left: 100%;
+        transform: translate(0);
+    }
+    100% {
+        left: 0;
+        transform: translate(-100%);
+    }
+}
+
+/* 点滅 */
+.blinking{
+    -webkit-animation:blink 0.1s ease-in-out infinite alternate;
+    -moz-animation:blink 0.1s ease-in-out infinite alternate;
+    animation:blink 0.1s ease-in-out infinite alternate;
+}
+@-webkit-keyframes blink{
+    0% {color:green}
+    100% {color:red}
+}
+@-moz-keyframes blink{
+    0% {color:green}
+    100% {color:red}
+}
+@keyframes blink{
+    0% {color:green}
+    100% {color:red}
+}
